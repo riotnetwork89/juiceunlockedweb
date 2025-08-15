@@ -1,102 +1,131 @@
-import Image from "next/image";
+import Navigation from '@/components/Navigation';
+import Link from 'next/link';
+import { Play, TrendingUp, Music, Star } from 'lucide-react';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-juice-black">
+      <Navigation />
+      
+      {/* Hero Section */}
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-6xl md:text-8xl font-display font-black ju-hero mb-6">
+            Unlock Your Sound
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            The ultimate music blog and promo platform. Get your music heard, build your fanbase, and unlock your potential.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link href="/submit" className="btn-juice text-lg px-8 py-4">
+              Submit Music
+            </Link>
+            <Link href="/promo" className="btn-juice text-lg px-8 py-4">
+              Buy Promo
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Trending Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center gap-3 mb-8">
+            <TrendingUp className="text-orange" size={32} />
+            <h2 className="text-4xl font-display font-bold text-white">Trending Now</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Trending Cards - Sample Data */}
+            {[1, 2, 3].map((item) => (
+              <div key={item} className="card group cursor-pointer">
+                <div className="aspect-square bg-gradient-to-br from-orange to-pulp-yellow rounded-lg mb-4 flex items-center justify-center">
+                  <Play className="text-juice-black" size={48} />
+                </div>
+                <div className="chip mb-3">PREMIERE</div>
+                <h3 className="text-xl font-bold text-white mb-2">New Heat from Rising Artist</h3>
+                <p className="text-gray-400 text-sm">This track is absolutely fire and deserves your attention...</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Posts */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center gap-3 mb-8">
+            <Music className="text-orange" size={32} />
+            <h2 className="text-4xl font-display font-bold text-white">Latest Posts</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Latest Posts - Sample Data */}
+            {[1, 2, 3, 4].map((item) => (
+              <div key={item} className="card group cursor-pointer">
+                <div className="aspect-video bg-gradient-to-br from-leaf-green to-orange rounded-lg mb-4"></div>
+                <div className="chip mb-3">NEWS</div>
+                <h3 className="text-lg font-bold text-white mb-2">Industry Update</h3>
+                <p className="text-gray-400 text-sm">Stay updated with the latest in music...</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Just Unlocked Ticker */}
+      <section className="py-8 bg-orange">
+        <div className="overflow-hidden">
+          <div className="flex animate-scroll whitespace-nowrap">
+            <div className="flex items-center gap-8 text-juice-black font-bold text-lg">
+              <span className="flex items-center gap-2">
+                <Star size={20} />
+                JUST UNLOCKED: New Artist Feature
+              </span>
+              <span className="flex items-center gap-2">
+                <Star size={20} />
+                TRENDING: Hot New Release
+              </span>
+              <span className="flex items-center gap-2">
+                <Star size={20} />
+                FEATURED: Rising Star Spotlight
+              </span>
+              <span className="flex items-center gap-2">
+                <Star size={20} />
+                JUST UNLOCKED: New Artist Feature
+              </span>
+              <span className="flex items-center gap-2">
+                <Star size={20} />
+                TRENDING: Hot New Release
+              </span>
+              <span className="flex items-center gap-2">
+                <Star size={20} />
+                FEATURED: Rising Star Spotlight
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-16 px-4 sm:px-6 lg:px-8 border-t border-orange/20">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="text-3xl font-display font-black ju-hero mb-4">
+            JUICE UNLOCKED
+          </div>
+          <p className="text-gray-400 mb-8">Unlock Your Sound. Unlock Your Potential.</p>
+          <div className="flex justify-center space-x-8">
+            <Link href="/submit" className="text-gray-400 hover:text-orange transition-colors">
+              Submit Music
+            </Link>
+            <Link href="/promo" className="text-gray-400 hover:text-orange transition-colors">
+              Promo Services
+            </Link>
+            <Link href="/merch" className="text-gray-400 hover:text-orange transition-colors">
+              Merchandise
+            </Link>
+          </div>
+        </div>
       </footer>
     </div>
   );

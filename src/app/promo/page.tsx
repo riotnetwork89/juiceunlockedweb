@@ -1,0 +1,134 @@
+import Navigation from '@/components/Navigation';
+import { Instagram, Mic, TrendingUp, Zap } from 'lucide-react';
+
+const promoServices = [
+  {
+    id: 'ig_post',
+    title: 'Instagram Post',
+    price: 50,
+    icon: Instagram,
+    features: [
+      'Professional post on main feed',
+      'Story highlight inclusion',
+      '24-48 hour delivery',
+      'Engagement guarantee'
+    ]
+  },
+  {
+    id: 'ig_story',
+    title: 'Instagram Story',
+    price: 50,
+    icon: TrendingUp,
+    features: [
+      'Featured story placement',
+      '24 hour visibility',
+      'Swipe-up link included',
+      'Story highlight archive'
+    ]
+  },
+  {
+    id: 'podcast',
+    title: 'Podcast Appearance',
+    price: 200,
+    icon: Mic,
+    features: [
+      'Live interview session',
+      'Full episode feature',
+      'Social media promotion',
+      'Audio file provided'
+    ]
+  },
+  {
+    id: 'album_rollout',
+    title: 'Full Album Rollout',
+    price: 2500,
+    icon: Zap,
+    features: [
+      'Multi-week campaign',
+      'Premiere + reels/shorts',
+      'Podcast + playlist placement',
+      'Newsletter + analytics',
+      'Dedicated campaign manager'
+    ],
+    popular: true
+  }
+];
+
+export default function PromoPage() {
+  return (
+    <div className="min-h-screen bg-juice-black">
+      <Navigation />
+      
+      <div className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-7xl font-display font-black ju-hero mb-6">
+              Promo Services
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Get your music the exposure it deserves. Professional promotion services to amplify your sound and grow your fanbase.
+            </p>
+          </div>
+
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {promoServices.map((service) => {
+              const IconComponent = service.icon;
+              return (
+                <div key={service.id} className={`card relative ${service.popular ? 'ring-2 ring-orange ju-glow' : ''}`}>
+                  {service.popular && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className="chip bg-orange text-white">MOST POPULAR</div>
+                    </div>
+                  )}
+                  
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="p-3 bg-orange/20 rounded-lg">
+                      <IconComponent className="text-orange" size={32} />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-display font-bold text-white">{service.title}</h3>
+                      <p className="text-3xl font-bold text-orange">${service.price}</p>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-3 mb-8">
+                    {service.features.map((feature, index) => (
+                      <li key={index} className="flex items-center gap-3 text-gray-300">
+                        <div className="w-2 h-2 bg-orange rounded-full"></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button className="btn-juice w-full text-lg py-4">
+                    Buy Now - ${service.price}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center mt-16 p-8 card max-w-4xl mx-auto">
+            <h2 className="text-3xl font-display font-bold text-white mb-4">
+              Ready to Unlock Your Potential?
+            </h2>
+            <p className="text-gray-300 mb-6">
+              Choose the perfect promotion package for your music and watch your fanbase grow.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="btn-juice text-lg px-8 py-4">
+                Get Started Today
+              </button>
+              <button className="border border-orange text-orange hover:bg-orange hover:text-juice-black transition-colors rounded-full px-8 py-4 font-bold">
+                Contact Us
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
