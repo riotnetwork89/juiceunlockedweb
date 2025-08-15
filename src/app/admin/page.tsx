@@ -21,7 +21,7 @@ interface PromoOrder {
   amount: number;
   status: string;
   created_at: string;
-  deliverables: any[];
+  deliverables: Array<{ task: string; completed: boolean }>;
 }
 
 export default function AdminPage() {
@@ -148,7 +148,7 @@ export default function AdminPage() {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id as any)}
+                  onClick={() => setActiveTab(tab.id as 'submissions' | 'promo' | 'merch' | 'reports')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-md font-medium transition-colors ${
                     activeTab === tab.id
                       ? 'bg-orange text-juice-black'

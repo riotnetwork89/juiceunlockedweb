@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
@@ -21,7 +21,7 @@ export interface Post {
   type: 'news' | 'premiere' | 'video' | 'interview' | 'review' | 'playlist' | 'sponsored'
   tags?: string[]
   cover_url?: string
-  body_richtext?: any
+  body_richtext?: Record<string, unknown>
   author: string
   status: 'draft' | 'published'
   featured: boolean
@@ -72,7 +72,7 @@ export interface PromoOrder {
   artist_name: string
   links?: string
   notes?: string
-  deliverables: any[]
+  deliverables: Record<string, unknown>[]
 }
 
 export interface Product {

@@ -109,7 +109,7 @@ export default function SubmitPage() {
                   <option value="">Select genre</option>
                   <option value="hip-hop">Hip Hop</option>
                   <option value="rap">Rap</option>
-                  <option value="r&b">R&B</option>
+                  <option value="r&b">R&amp;B</option>
                   <option value="pop">Pop</option>
                   <option value="rock">Rock</option>
                   <option value="electronic">Electronic</option>
@@ -265,7 +265,7 @@ export default function SubmitPage() {
                 Submit for Review
               </button>
               <p className="text-gray-400 text-sm mt-4">
-                By submitting, you agree to our terms and conditions. We'll review your submission and get back to you within 3-5 business days.
+                By submitting, you agree to our terms and conditions. We&apos;ll review your submission and get back to you within 3-5 business days.
               </p>
             </div>
           </form>
