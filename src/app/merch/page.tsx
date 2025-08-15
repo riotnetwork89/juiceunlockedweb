@@ -74,10 +74,10 @@ export default function MerchPage() {
           {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-7xl font-display font-black ju-hero mb-6">
-              Merchandise
+              Hottest Threads.<br />Street Approved.
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Rep the JUICE UNLOCKED brand with our exclusive merchandise collection. Premium quality, bold designs.
+              Limited drops. Once they&apos;re gone, they&apos;re gone.
             </p>
           </div>
 
@@ -90,7 +90,7 @@ export default function MerchPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {products.filter(product => product.featured).map((product) => (
-                <div key={product.id} className="card group cursor-pointer">
+                <div key={product.id} className="card-black group cursor-pointer">
                   <div className="aspect-square bg-gradient-to-br from-orange to-pulp-yellow rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
                     <div className="text-juice-black font-display font-black text-2xl">JU</div>
                     <div className="absolute top-3 right-3">
@@ -103,7 +103,7 @@ export default function MerchPage() {
                     <span className="text-2xl font-bold text-orange">${product.price}</span>
                     <span className="text-sm text-gray-500">{product.stock} in stock</span>
                   </div>
-                  <button className="btn-juice w-full flex items-center justify-center gap-2">
+                  <button className="btn-yellow w-full flex items-center justify-center gap-2">
                     <ShoppingCart size={16} />
                     Add to Cart
                   </button>
@@ -118,7 +118,7 @@ export default function MerchPage() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
-                <div key={product.id} className="card group cursor-pointer">
+                <div key={product.id} className="card-black group cursor-pointer">
                   <div className="aspect-square bg-gradient-to-br from-leaf-green to-orange rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
                     <div className="text-juice-black font-display font-black text-xl">JU</div>
                     {product.stock < 20 && (
@@ -148,7 +148,7 @@ export default function MerchPage() {
                     </div>
                   </div>
                   
-                  <button className="btn-juice w-full flex items-center justify-center gap-2">
+                  <button className="btn-yellow w-full flex items-center justify-center gap-2">
                     <ShoppingCart size={16} />
                     Buy Now
                   </button>

@@ -1,6 +1,6 @@
 import Navigation from '@/components/Navigation';
 import Link from 'next/link';
-import { Play, TrendingUp, Music, Star } from 'lucide-react';
+import { Play, TrendingUp, Music } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-6xl md:text-8xl font-display font-black ju-hero mb-6">
-            Unlock Your Sound
+            UNLOCK YOUR SOUND.<br />GET HEARD DAILY.
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
             The ultimate music blog and promo platform. Get your music heard, build your fanbase, and unlock your potential.
@@ -35,16 +35,23 @@ export default function Home() {
             <h2 className="text-4xl font-display font-bold text-white">Trending Now</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Trending Cards - Sample Data */}
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="card group cursor-pointer">
-                <div className="aspect-square bg-gradient-to-br from-orange to-pulp-yellow rounded-lg mb-4 flex items-center justify-center">
-                  <Play className="text-juice-black" size={48} />
+            {[
+              { type: 'PREMIERE', bg: 'from-orange to-red-600', artist: 'Rising Star' },
+              { type: 'INTERVIEW', bg: 'from-orange to-yellow-600', artist: 'MC Thunder' },
+              { type: 'JU PLAYLIST', bg: 'from-green-600 to-blue-600', artist: 'TOP PICKS' },
+              { type: 'PREMIERE', bg: 'from-purple-600 to-pink-600', artist: 'New Artist' }
+            ].map((item, index) => (
+              <div key={index} className="card-black group cursor-pointer">
+                <div className={`aspect-square bg-gradient-to-br ${item.bg} rounded-lg mb-4 flex items-center justify-center relative overflow-hidden`}>
+                  <div className="w-20 h-20 bg-black/20 rounded-full flex items-center justify-center">
+                    <Play className="text-white" size={32} />
+                  </div>
+                  <div className="absolute top-3 left-3">
+                    <div className="chip bg-orange text-white text-xs">{item.type}</div>
+                  </div>
                 </div>
-                <div className="chip mb-3">PREMIERE</div>
-                <h3 className="text-xl font-bold text-white mb-2">New Heat from Rising Artist</h3>
-                <p className="text-gray-400 text-sm">This track is absolutely fire and deserves your attention...</p>
               </div>
             ))}
           </div>
@@ -61,47 +68,51 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Latest Posts - Sample Data */}
-            {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="card group cursor-pointer">
-                <div className="aspect-video bg-gradient-to-br from-leaf-green to-orange rounded-lg mb-4"></div>
-                <div className="chip mb-3">NEWS</div>
-                <h3 className="text-lg font-bold text-white mb-2">Industry Update</h3>
-                <p className="text-gray-400 text-sm">Stay updated with the latest in music...</p>
+            {[
+              { type: 'NEWS', bg: 'from-blue-600 to-purple-600', title: "Lil Droptop Drops 'Weekend' Freestyle", desc: 'New heat from the rising star...' },
+              { type: 'PREMIERE', bg: 'from-orange to-red-600', title: "Watch the Video for Sk8rboi's 'Coast'", desc: 'Exclusive premiere on JUICE UNLOCKED...' },
+              { type: 'VIDEOS', bg: 'from-yellow-600 to-orange', title: 'New Interviews Q&A: Big Juice in Conversation', desc: 'In-depth conversation with the artist...' },
+              { type: 'INTERVIEWS', bg: 'from-green-600 to-teal-600', title: 'Behind the Scenes: Studio Sessions', desc: 'Exclusive behind the scenes content...' }
+            ].map((item, index) => (
+              <div key={index} className="card-black group cursor-pointer">
+                <div className={`aspect-video bg-gradient-to-br ${item.bg} rounded-lg mb-4 relative overflow-hidden`}>
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                    <Play className="text-white" size={24} />
+                  </div>
+                </div>
+                <div className="chip mb-3 bg-pulp-yellow text-juice-black">{item.type}</div>
+                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-gray-400 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Just Unlocked Ticker */}
-      <section className="py-8 bg-orange">
-        <div className="overflow-hidden">
-          <div className="flex animate-scroll whitespace-nowrap">
-            <div className="flex items-center gap-8 text-juice-black font-bold text-lg">
-              <span className="flex items-center gap-2">
-                <Star size={20} />
-                JUST UNLOCKED: New Artist Feature
-              </span>
-              <span className="flex items-center gap-2">
-                <Star size={20} />
-                TRENDING: Hot New Release
-              </span>
-              <span className="flex items-center gap-2">
-                <Star size={20} />
-                FEATURED: Rising Star Spotlight
-              </span>
-              <span className="flex items-center gap-2">
-                <Star size={20} />
-                JUST UNLOCKED: New Artist Feature
-              </span>
-              <span className="flex items-center gap-2">
-                <Star size={20} />
-                TRENDING: Hot New Release
-              </span>
-              <span className="flex items-center gap-2">
-                <Star size={20} />
-                FEATURED: Rising Star Spotlight
-              </span>
+      {/* Weekly Editorial Picks */}
+      <section className="py-16 bg-pulp-yellow">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-16 h-16 border-4 border-orange rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-orange rounded"></div>
+            </div>
+            <div>
+              <h2 className="text-4xl font-display font-black text-orange">WEEKLY EDITORIAL</h2>
+              <h3 className="text-4xl font-display font-black text-orange">PICKS</h3>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-orange">
+            <div>
+              <span className="text-2xl font-bold">1- Sample Song - Stro</span>
+              <span className="float-right text-2xl font-bold">+ Song</span>
+            </div>
+            <div>
+              <span className="text-2xl font-bold">2- Sample Song for Evampe</span>
+              <span className="float-right text-2xl font-bold">+ On Away</span>
+            </div>
+            <div>
+              <span className="text-2xl font-bold">3- Sample Song Rig Name</span>
+              <span className="float-right text-2xl font-bold">+ Subtitle</span>
             </div>
           </div>
         </div>

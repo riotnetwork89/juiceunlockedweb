@@ -98,3 +98,52 @@ body {
 .animate-scroll {
   animation: scroll 20s linear infinite;
 }
+
+/* Additional JUICE UNLOCKED Components */
+.card-black {
+  background: #000000;
+  border: 1px solid rgba(255, 106, 0, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card-black:hover {
+  border-color: var(--orange);
+  box-shadow: 0 10px 30px rgba(255, 106, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-yellow {
+  background: var(--pulp-yellow);
+  color: var(--black);
+  font-weight: 700;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-yellow:hover {
+  background: #FFD700;
+  transform: translateY(-1px);
+}
+
+.stats-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--pulp-yellow);
+  font-family: var(--font-display);
+}
+
+.rating-stars {
+  color: var(--orange);
+  display: flex;
+  gap: 0.25rem;
+}

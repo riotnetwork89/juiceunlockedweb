@@ -5,15 +5,13 @@ export async function POST(request: NextRequest) {
   try {
     const { orderId, paypalTransactionId } = await request.json()
 
-    const { data: order, error: orderError } = await supabase
+    const { error: orderError } = await supabase
       .from('orders')
       .update({
         status: 'paid',
         paypal_txn_id: paypalTransactionId
       })
       .eq('id', orderId)
-      .select()
-      .single()
 
     if (orderError) {
       console.error('Order update error:', orderError)

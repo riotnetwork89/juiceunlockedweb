@@ -182,7 +182,7 @@ export default function AdminPage() {
 
               <div className="grid gap-4">
                 {submissions.map((submission) => (
-                  <div key={submission.id} className="card">
+                  <div key={submission.id} className="card-black">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <div className="w-16 h-16 bg-gradient-to-br from-orange to-pulp-yellow rounded-lg flex items-center justify-center">
@@ -256,7 +256,7 @@ export default function AdminPage() {
 
               <div className="grid gap-4">
                 {promoOrders.map((order) => (
-                  <div key={order.id} className="card">
+                  <div key={order.id} className="card-black">
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-4">
                         <div className="w-16 h-16 bg-gradient-to-br from-leaf-green to-orange rounded-lg flex items-center justify-center">
@@ -310,26 +310,26 @@ export default function AdminPage() {
               <h2 className="text-2xl font-display font-bold text-white">Reports &amp; Analytics</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="card text-center">
+                <div className="card-black text-center">
                   <DollarSign className="text-orange mx-auto mb-4" size={48} />
                   <h3 className="text-2xl font-bold text-white mb-2">$3,250</h3>
                   <p className="text-gray-400">Total Revenue (This Month)</p>
                 </div>
                 
-                <div className="card text-center">
+                <div className="card-black text-center">
                   <Music className="text-orange mx-auto mb-4" size={48} />
                   <h3 className="text-2xl font-bold text-white mb-2">47</h3>
                   <p className="text-gray-400">Submissions (This Month)</p>
                 </div>
                 
-                <div className="card text-center">
+                <div className="card-black text-center">
                   <TrendingUp className="text-orange mx-auto mb-4" size={48} />
                   <h3 className="text-2xl font-bold text-white mb-2">1.2M</h3>
                   <p className="text-gray-400">Total Streams</p>
                 </div>
               </div>
 
-              <div className="card">
+              <div className="card-black">
                 <h3 className="text-xl font-bold text-white mb-4">Revenue by Source</h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">

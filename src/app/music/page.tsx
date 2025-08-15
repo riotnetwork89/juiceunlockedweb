@@ -1,6 +1,5 @@
 import Navigation from '@/components/Navigation';
-import { Play, Heart, Share2, Filter, Upload } from 'lucide-react';
-import Link from 'next/link';
+import { Play, Heart, Star } from 'lucide-react';
 
 const featuredProjects = [
   {
@@ -93,87 +92,135 @@ export default function MusicPage() {
       
       <div className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
-            <div>
-              <h1 className="text-5xl md:text-7xl font-display font-black ju-hero mb-4">
-                Music
-              </h1>
-              <p className="text-xl text-gray-300">
-                Discover the hottest tracks and rising artists
-              </p>
-            </div>
-            <Link href="/submit" className="btn-juice mt-4 md:mt-0 flex items-center gap-2">
-              <Upload size={20} />
-              Submit Your Music
-            </Link>
-          </div>
-
-          {/* Featured Section */}
-          <section className="mb-16">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="chip bg-orange text-white">JU APPROVED</div>
-              <h2 className="text-3xl font-display font-bold text-white">Featured</h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {featuredProjects.map((project) => (
-                <div key={project.id} className="card group cursor-pointer">
-                  <div className="aspect-square bg-gradient-to-br from-orange to-pulp-yellow rounded-lg mb-4 flex items-center justify-center relative overflow-hidden">
-                    <Play className="text-juice-black group-hover:scale-110 transition-transform" size={48} />
-                    <div className="absolute top-3 right-3">
-                      <div className="chip bg-orange text-white text-xs">FEATURED</div>
-                    </div>
+          {/* Artist Profile Header */}
+          <div className="mb-16">
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div className="w-64 h-64 bg-gradient-to-br from-orange to-red-600 rounded-2xl flex items-center justify-center">
+                <div className="w-32 h-32 bg-black/20 rounded-full flex items-center justify-center">
+                  <div className="text-white text-4xl font-bold">AR</div>
+                </div>
+              </div>
+              
+              <div className="flex-1">
+                <h1 className="text-6xl font-display font-black text-pulp-yellow mb-4">
+                  Alex Rivera
+                </h1>
+                <div className="flex items-center gap-4 text-orange mb-4">
+                  <span className="flex items-center gap-2">
+                    <div className="w-4 h-4 bg-orange rounded-full"></div>
+                    Los Angeles, CA
+                  </span>
+                  <span>alex_rivera</span>
+                  <span>youtube.com/alexrivera</span>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-8 mb-6">
+                  <div>
+                    <div className="text-orange font-bold mb-1">STREAMS</div>
+                    <div className="stats-number">1,200</div>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-1">{project.title}</h3>
-                  <p className="text-gray-400 mb-3">{project.artist}</p>
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <span>{project.streams.toLocaleString()} streams</span>
-                    <div className="flex items-center gap-2">
-                      <Heart size={16} />
-                      <Share2 size={16} />
-                    </div>
+                  <div>
+                    <div className="text-orange font-bold mb-1">UPLOADS</div>
+                    <div className="stats-number">3</div>
                   </div>
                 </div>
-              ))}
+                
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="rating-stars">
+                    <Star className="fill-current" size={24} />
+                    <Star className="fill-current" size={24} />
+                    <Star className="fill-current" size={24} />
+                    <Star className="fill-current" size={24} />
+                    <Star size={24} />
+                  </div>
+                  <div className="flex items-center gap-2 bg-orange/20 px-3 py-1 rounded-full">
+                    <Play size={16} className="text-orange" />
+                    <span className="text-orange font-bold">5</span>
+                    <span className="text-orange font-bold">2</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-8">
+              <h2 className="text-orange font-bold mb-2">BIO</h2>
+              <p className="text-white text-lg">
+                Hip-hop artist blending classic vibes with modern flows. Latest mixtape &quot;All or Nothing&quot; out now!
+              </p>
+            </div>
+          </div>
+
+          {/* JU Leaderboards */}
+          <section className="mb-16">
+            <h2 className="text-5xl font-display font-black text-pulp-yellow mb-12">JU LEADERBOARDS</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <h3 className="text-2xl font-display font-bold text-orange mb-6">TOP STREAMS THIS WEEK</h3>
+                <div className="space-y-4">
+                  {[
+                    { rank: 1, title: 'Dream Chaser', artist: 'MC Thunder' },
+                    { rank: 2, title: 'The Come Up', artist: 'Rising Star' },
+                    { rank: 3, title: 'Midnight Grooves', artist: 'Luna Rose' },
+                    { rank: 4, title: 'Night Drive', artist: 'Urban Poet' }
+                  ].map((track) => (
+                    <div key={track.rank} className="flex items-center gap-4 text-pulp-yellow">
+                      <span className="text-2xl font-bold w-8">{track.rank}</span>
+                      <span className="text-xl">{track.title}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-display font-bold text-orange mb-6">TOP NEW UPLOADS</h3>
+                <div className="space-y-4">
+                  {[
+                    { rank: 1, title: 'Young & Wild', artist: 'New Artist' },
+                    { rank: 2, title: 'City Lights', artist: 'Street Poet' },
+                    { rank: 3, title: 'No Limits', artist: 'Tech Wizard' },
+                    { rank: 4, title: 'Take Flight', artist: 'Dream Chaser' },
+                    { rank: 5, title: 'Grind Mode', artist: 'Young Melody' }
+                  ].map((track) => (
+                    <div key={track.rank} className="flex items-center gap-4 text-pulp-yellow">
+                      <span className="text-2xl font-bold w-8">{track.rank}</span>
+                      <span className="text-xl">{track.title}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
-          {/* Browse Section */}
+          {/* Artist Projects */}
           <section>
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-              <h2 className="text-3xl font-display font-bold text-white mb-4 md:mb-0">Browse All</h2>
-              
-              <div className="flex items-center gap-4">
-                <button className="flex items-center gap-2 px-4 py-2 border border-orange/30 rounded-full text-gray-300 hover:border-orange hover:text-orange transition-colors">
-                  <Filter size={16} />
-                  Filter
-                </button>
-                <select className="bg-juice-black border border-orange/30 rounded-full px-4 py-2 text-gray-300 focus:border-orange focus:outline-none">
-                  <option>Latest</option>
-                  <option>Most Streamed</option>
-                  <option>JU Approved</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {allProjects.map((project) => (
-                <div key={project.id} className="card group cursor-pointer">
-                  <div className="aspect-square bg-gradient-to-br from-leaf-green to-orange rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
-                    <Play className="text-juice-black group-hover:scale-110 transition-transform" size={32} />
-                    {project.approved && (
-                      <div className="absolute top-2 right-2">
-                        <div className="w-3 h-3 bg-orange rounded-full"></div>
-                      </div>
-                    )}
+            <div className="space-y-6">
+              {[
+                { title: 'All or Nothing', type: 'Mixtape', year: '2024', rating: 5, likes: 5 },
+                { title: 'Lost & Found', type: 'Album', year: '2022', rating: 4, likes: 2 }
+              ].map((project, index) => (
+                <div key={index} className="flex items-center gap-6 card-black">
+                  <div className="w-20 h-20 bg-gradient-to-br from-orange to-red-600 rounded-lg flex items-center justify-center">
+                    <div className="text-white text-xl font-bold">AR</div>
                   </div>
-                  <h3 className="text-sm font-bold text-white mb-1 truncate">{project.title}</h3>
-                  <p className="text-xs text-gray-400 mb-2 truncate">{project.artist}</p>
-                  <div className="flex items-center justify-between text-xs text-gray-500">
-                    <span>{(project.streams / 1000).toFixed(0)}K</span>
-                    <div className="flex items-center gap-1">
-                      <Heart size={12} />
+                  
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-pulp-yellow mb-1">{project.title}</h3>
+                    <p className="text-gray-400">{project.type} • {project.year}</p>
+                  </div>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="rating-stars">
+                      {[...Array(5)].map((_, i) => (
+                        <Star 
+                          key={i} 
+                          className={i < project.rating ? 'fill-current' : ''} 
+                          size={20} 
+                        />
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-1 text-orange">
+                      <Heart size={16} />
                       <span>{project.likes}</span>
                     </div>
                   </div>
@@ -181,13 +228,6 @@ export default function MusicPage() {
               ))}
             </div>
           </section>
-
-          {/* Load More */}
-          <div className="text-center mt-12">
-            <button className="btn-juice px-8 py-4">
-              Load More Tracks
-            </button>
-          </div>
         </div>
       </div>
     </div>
