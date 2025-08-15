@@ -66,17 +66,17 @@ const products = [
 
 export default function MerchPage() {
   return (
-    <div className="min-h-screen bg-juice-black">
+    <div className="min-h-screen bg-orange">
       <Navigation />
       
       <div className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-7xl font-display font-black ju-hero mb-6">
+            <h1 className="text-5xl md:text-7xl font-display font-black text-pulp-yellow mb-6">
               Hottest Threads.<br />Street Approved.
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               Limited drops. Once they&apos;re gone, they&apos;re gone.
             </p>
           </div>
@@ -84,8 +84,8 @@ export default function MerchPage() {
           {/* Featured Products */}
           <section className="mb-16">
             <div className="flex items-center gap-3 mb-8">
-              <Star className="text-orange" size={32} />
-              <h2 className="text-3xl font-display font-bold text-white">Featured Items</h2>
+              <Star className="text-pulp-yellow" size={32} />
+              <h2 className="text-3xl font-display font-bold text-black">Featured Items</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -114,7 +114,7 @@ export default function MerchPage() {
 
           {/* All Products */}
           <section>
-            <h2 className="text-3xl font-display font-bold text-white mb-8">All Products</h2>
+            <h2 className="text-3xl font-display font-bold text-black mb-8">All Products</h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
@@ -158,18 +158,18 @@ export default function MerchPage() {
           </section>
 
           {/* CTA Section */}
-          <div className="text-center mt-16 p-8 card max-w-4xl mx-auto">
-            <h2 className="text-3xl font-display font-bold text-white mb-4">
+          <div className="text-center mt-16 p-8 card-orange max-w-4xl mx-auto">
+            <h2 className="text-3xl font-display font-bold text-black mb-4">
               Join the JUICE UNLOCKED Family
             </h2>
-            <p className="text-gray-300 mb-6">
+            <p className="text-black mb-6">
               Wear your passion for music. Every purchase supports independent artists and the culture.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-juice text-lg px-8 py-4">
+              <button className="btn-yellow-solid text-lg px-8 py-4">
                 Shop All Items
               </button>
-              <button className="border border-orange text-orange hover:bg-orange hover:text-juice-black transition-colors rounded-full px-8 py-4 font-bold">
+              <button className="border border-black text-black hover:bg-black hover:text-pulp-yellow transition-colors rounded-full px-8 py-4 font-bold">
                 Size Guide
               </button>
             </div>

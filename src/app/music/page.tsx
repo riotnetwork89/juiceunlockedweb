@@ -87,7 +87,7 @@ const allProjects = [
 
 export default function MusicPage() {
   return (
-    <div className="min-h-screen bg-juice-black">
+    <div className="min-h-screen bg-orange">
       <Navigation />
       
       <div className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
@@ -105,7 +105,7 @@ export default function MusicPage() {
                 <h1 className="text-6xl font-display font-black text-pulp-yellow mb-4">
                   Alex Rivera
                 </h1>
-                <div className="flex items-center gap-4 text-orange mb-4">
+                <div className="flex items-center gap-4 text-black mb-4">
                   <span className="flex items-center gap-2">
                     <div className="w-4 h-4 bg-orange rounded-full"></div>
                     Los Angeles, CA
@@ -116,11 +116,11 @@ export default function MusicPage() {
                 
                 <div className="grid grid-cols-2 gap-8 mb-6">
                   <div>
-                    <div className="text-orange font-bold mb-1">STREAMS</div>
+                    <div className="text-black font-bold mb-1">STREAMS</div>
                     <div className="stats-number">1,200</div>
                   </div>
                   <div>
-                    <div className="text-orange font-bold mb-1">UPLOADS</div>
+                    <div className="text-black font-bold mb-1">UPLOADS</div>
                     <div className="stats-number">3</div>
                   </div>
                 </div>
@@ -133,18 +133,18 @@ export default function MusicPage() {
                     <Star className="fill-current" size={24} />
                     <Star size={24} />
                   </div>
-                  <div className="flex items-center gap-2 bg-orange/20 px-3 py-1 rounded-full">
-                    <Play size={16} className="text-orange" />
-                    <span className="text-orange font-bold">5</span>
-                    <span className="text-orange font-bold">2</span>
+                  <div className="flex items-center gap-2 bg-black/20 px-3 py-1 rounded-full">
+                    <Play size={16} className="text-black" />
+                    <span className="text-black font-bold">5</span>
+                    <span className="text-black font-bold">2</span>
                   </div>
                 </div>
               </div>
             </div>
             
             <div className="mt-8">
-              <h2 className="text-orange font-bold mb-2">BIO</h2>
-              <p className="text-white text-lg">
+              <h2 className="text-black font-bold mb-2">BIO</h2>
+              <p className="text-black text-lg">
                 Hip-hop artist blending classic vibes with modern flows. Latest mixtape &quot;All or Nothing&quot; out now!
               </p>
             </div>
@@ -156,7 +156,7 @@ export default function MusicPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
-                <h3 className="text-2xl font-display font-bold text-orange mb-6">TOP STREAMS THIS WEEK</h3>
+                <h3 className="text-2xl font-display font-bold text-black mb-6">TOP STREAMS THIS WEEK</h3>
                 <div className="space-y-4">
                   {[
                     { rank: 1, title: 'Dream Chaser', artist: 'MC Thunder' },
@@ -173,7 +173,7 @@ export default function MusicPage() {
               </div>
               
               <div>
-                <h3 className="text-2xl font-display font-bold text-orange mb-6">TOP NEW UPLOADS</h3>
+                <h3 className="text-2xl font-display font-bold text-black mb-6">TOP NEW UPLOADS</h3>
                 <div className="space-y-4">
                   {[
                     { rank: 1, title: 'Young & Wild', artist: 'New Artist' },

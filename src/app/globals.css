@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0B0B0B;
-  --foreground: #ffffff;
+  --background: #FF6A00;
+  --foreground: #FFE566;
   --orange: #FF6A00;
   --pulp-yellow: #FFE566;
   --leaf-green: #188A2D;
@@ -146,4 +146,47 @@ body {
   color: var(--orange);
   display: flex;
   gap: 0.25rem;
+}
+
+/* Orange-focused theme utilities */
+.bg-orange-primary {
+  background: var(--orange);
+}
+
+.text-yellow-primary {
+  color: var(--pulp-yellow);
+}
+
+.card-orange {
+  background: rgba(255, 229, 102, 0.1);
+  border: 1px solid var(--pulp-yellow);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card-orange:hover {
+  background: rgba(255, 229, 102, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-yellow-solid {
+  background: var(--pulp-yellow);
+  color: var(--black);
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-yellow-solid:hover {
+  background: #FFD700;
+  transform: translateY(-1px);
 }

@@ -121,23 +121,23 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="min-h-screen bg-juice-black">
+    <div className="min-h-screen bg-orange">
       <Navigation />
       
       <div className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-display font-black ju-hero mb-4">
+            <h1 className="text-5xl md:text-7xl font-display font-black text-pulp-yellow mb-4">
               Admin Dashboard
             </h1>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-black">
               Manage submissions, orders, and platform content
             </p>
           </div>
 
           {/* Tabs */}
-          <div className="flex space-x-1 mb-8 bg-white/5 p-1 rounded-lg">
+          <div className="flex space-x-1 mb-8 bg-black/10 p-1 rounded-lg">
             {[
               { id: 'submissions', label: 'Submissions', icon: Music },
               { id: 'promo', label: 'Promo Orders', icon: TrendingUp },
@@ -151,8 +151,8 @@ export default function AdminPage() {
                   onClick={() => setActiveTab(tab.id as 'submissions' | 'promo' | 'merch' | 'reports')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-md font-medium transition-colors ${
                     activeTab === tab.id
-                      ? 'bg-orange text-juice-black'
-                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      ? 'bg-pulp-yellow text-black'
+                      : 'text-black hover:text-black hover:bg-black/10'
                   }`}
                 >
                   <IconComponent size={16} />
@@ -166,12 +166,12 @@ export default function AdminPage() {
           {activeTab === 'submissions' && (
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-display font-bold text-white">Music Submissions</h2>
+                <h2 className="text-2xl font-display font-bold text-black">Music Submissions</h2>
                 <div className="flex gap-2">
-                  <button className="px-4 py-2 bg-orange/20 text-orange rounded-lg font-medium">
+                  <button className="px-4 py-2 bg-black/20 text-black rounded-lg font-medium">
                     Priority First
                   </button>
-                  <select className="bg-white/10 border border-orange/30 rounded-lg px-4 py-2 text-white">
+                  <select className="bg-white/20 border border-black/30 rounded-lg px-4 py-2 text-black">
                     <option>All Status</option>
                     <option>Received</option>
                     <option>Under Review</option>
@@ -190,14 +190,14 @@ export default function AdminPage() {
                         </div>
                         <div>
                           <div className="flex items-center gap-2 mb-1">
-                            <h3 className="text-lg font-bold text-white">{submission.title}</h3>
+                            <h3 className="text-lg font-bold text-black">{submission.title}</h3>
                             {submission.priority && (
                               <div className="chip bg-red-500 text-white text-xs">PRIORITY</div>
                             )}
                           </div>
-                          <p className="text-gray-400">{submission.artist_name}</p>
+                          <p className="text-black/70">{submission.artist_name}</p>
                           <div className="flex items-center gap-2 mt-1">
-                            <span className="chip bg-gray-600 text-white text-xs">{submission.genre}</span>
+                            <span className="chip bg-black text-white text-xs">{submission.genre}</span>
                             <span className={`flex items-center gap-1 text-sm ${getStatusColor(submission.status)}`}>
                               {getStatusIcon(submission.status)}
                               {submission.status.replace('_', ' ').toUpperCase()}
@@ -242,9 +242,9 @@ export default function AdminPage() {
           {activeTab === 'promo' && (
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-display font-bold text-white">Promo Orders</h2>
+                <h2 className="text-2xl font-display font-bold text-black">Promo Orders</h2>
                 <div className="flex gap-2">
-                  <select className="bg-white/10 border border-orange/30 rounded-lg px-4 py-2 text-white">
+                  <select className="bg-white/20 border border-black/30 rounded-lg px-4 py-2 text-black">
                     <option>All Packages</option>
                     <option>Instagram Post</option>
                     <option>Instagram Story</option>
@@ -263,8 +263,8 @@ export default function AdminPage() {
                           <TrendingUp className="text-juice-black" size={24} />
                         </div>
                         <div>
-                          <h3 className="text-lg font-bold text-white">{order.package.replace('_', ' ').toUpperCase()}</h3>
-                          <p className="text-gray-400">{order.artist_name}</p>
+                          <h3 className="text-lg font-bold text-black">{order.package.replace('_', ' ').toUpperCase()}</h3>
+                          <p className="text-black/70">{order.artist_name}</p>
                           <div className="flex items-center gap-2 mt-1">
                             <span className="text-orange font-bold">${order.amount}</span>
                             <span className="chip bg-green-600 text-white text-xs">{order.status.toUpperCase()}</span>
@@ -273,25 +273,25 @@ export default function AdminPage() {
                       </div>
                       
                       <div className="text-right">
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-black/70">
                           {new Date(order.created_at).toLocaleDateString()}
                         </p>
                       </div>
                     </div>
 
                     {/* Deliverables Checklist */}
-                    <div className="bg-white/5 rounded-lg p-4">
-                      <h4 className="text-white font-medium mb-3">Deliverables</h4>
+                    <div className="bg-black/10 rounded-lg p-4">
+                      <h4 className="text-black font-medium mb-3">Deliverables</h4>
                       <div className="space-y-2">
                         {order.deliverables.map((deliverable, index) => (
                           <div key={index} className="flex items-center gap-3">
                             <input
                               type="checkbox"
                               checked={deliverable.completed}
-                              className="w-4 h-4 text-orange bg-white/10 border-orange/30 rounded focus:ring-orange"
+                              className="w-4 h-4 text-orange bg-white/20 border-black/30 rounded focus:ring-orange"
                               readOnly
                             />
-                            <span className={`text-sm ${deliverable.completed ? 'text-green-400 line-through' : 'text-gray-300'}`}>
+                            <span className={`text-sm ${deliverable.completed ? 'text-green-600 line-through' : 'text-black'}`}>
                               {deliverable.task}
                             </span>
                           </div>
@@ -307,41 +307,41 @@ export default function AdminPage() {
           {/* Reports Tab */}
           {activeTab === 'reports' && (
             <div className="space-y-6">
-              <h2 className="text-2xl font-display font-bold text-white">Reports &amp; Analytics</h2>
+              <h2 className="text-2xl font-display font-bold text-black">Reports &amp; Analytics</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="card-black text-center">
                   <DollarSign className="text-orange mx-auto mb-4" size={48} />
-                  <h3 className="text-2xl font-bold text-white mb-2">$3,250</h3>
-                  <p className="text-gray-400">Total Revenue (This Month)</p>
+                  <h3 className="text-2xl font-bold text-black mb-2">$3,250</h3>
+                  <p className="text-black/70">Total Revenue (This Month)</p>
                 </div>
                 
                 <div className="card-black text-center">
                   <Music className="text-orange mx-auto mb-4" size={48} />
-                  <h3 className="text-2xl font-bold text-white mb-2">47</h3>
-                  <p className="text-gray-400">Submissions (This Month)</p>
+                  <h3 className="text-2xl font-bold text-black mb-2">47</h3>
+                  <p className="text-black/70">Submissions (This Month)</p>
                 </div>
                 
                 <div className="card-black text-center">
                   <TrendingUp className="text-orange mx-auto mb-4" size={48} />
-                  <h3 className="text-2xl font-bold text-white mb-2">1.2M</h3>
-                  <p className="text-gray-400">Total Streams</p>
+                  <h3 className="text-2xl font-bold text-black mb-2">1.2M</h3>
+                  <p className="text-black/70">Total Streams</p>
                 </div>
               </div>
 
               <div className="card-black">
-                <h3 className="text-xl font-bold text-white mb-4">Revenue by Source</h3>
+                <h3 className="text-xl font-bold text-black mb-4">Revenue by Source</h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-300">Promo Services</span>
+                    <span className="text-black">Promo Services</span>
                     <span className="text-orange font-bold">$2,800 (86%)</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-300">Priority Reviews</span>
+                    <span className="text-black">Priority Reviews</span>
                     <span className="text-orange font-bold">$290 (9%)</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-300">Merchandise</span>
+                    <span className="text-black">Merchandise</span>
                     <span className="text-orange font-bold">$160 (5%)</span>
                   </div>
                 </div>

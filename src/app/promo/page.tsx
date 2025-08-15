@@ -56,17 +56,17 @@ const promoServices = [
 
 export default function PromoPage() {
   return (
-    <div className="min-h-screen bg-juice-black">
+    <div className="min-h-screen bg-orange">
       <Navigation />
       
       <div className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-7xl font-display font-black ju-hero mb-6">
+            <h1 className="text-5xl md:text-7xl font-display font-black text-pulp-yellow mb-6">
               Buy Promo —<br />Unlock Your Exposure
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               Choose your promo package, checkout, and let our team handle rest.
             </p>
           </div>
@@ -115,18 +115,18 @@ export default function PromoPage() {
           </div>
 
           {/* CTA Section */}
-          <div className="text-center mt-16 p-8 card max-w-4xl mx-auto">
-            <h2 className="text-3xl font-display font-bold text-white mb-4">
+          <div className="text-center mt-16 p-8 card-orange max-w-4xl mx-auto">
+            <h2 className="text-3xl font-display font-bold text-black mb-4">
               Ready to Unlock Your Potential?
             </h2>
-            <p className="text-gray-300 mb-6">
+            <p className="text-black mb-6">
               Choose the perfect promotion package for your music and watch your fanbase grow.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-juice text-lg px-8 py-4">
+              <button className="btn-yellow-solid text-lg px-8 py-4">
                 Get Started Today
               </button>
-              <button className="border border-orange text-orange hover:bg-orange hover:text-juice-black transition-colors rounded-full px-8 py-4 font-bold">
+              <button className="border border-black text-black hover:bg-black hover:text-pulp-yellow transition-colors rounded-full px-8 py-4 font-bold">
                 Contact Us
               </button>
             </div>
