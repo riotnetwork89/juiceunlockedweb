@@ -1,29 +1,44 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { supabase } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
     const { amount, currency = 'USD', source, packageType, artistName, links } = await request.json()
 
-    const mockOrder = {
-      id: `order_${Date.now()}`,
-      amount,
-      currency,
-      status: 'created',
-      source
+    const { data: order, error: orderError } = await supabase
+      .from('orders')
+      .insert({
+        amount,
+        currency,
+        status: 'created',
+        source
+      })
+      .select()
+      .single()
+
+    if (orderError) {
+      console.error('Order creation error:', orderError)
+      return NextResponse.json({ error: 'Failed to create order' }, { status: 500 })
     }
 
     if (source === 'promo' && packageType) {
-      console.log('Mock promo order created:', {
-        order_id: mockOrder.id,
-        package: packageType,
-        artist_name: artistName,
-        links: JSON.stringify(links || {})
-      })
+      const { error: promoError } = await supabase
+        .from('promo_orders')
+        .insert({
+          order_id: order.id,
+          package: packageType,
+          artist_name: artistName,
+          links: JSON.stringify(links || {})
+        })
+
+      if (promoError) {
+        console.error('Promo order creation error:', promoError)
+      }
     }
 
     return NextResponse.json({
       success: true,
-      orderId: mockOrder.id,
+      orderId: order.id,
     })
 
   } catch (error) {

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { supabase } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,41 +20,100 @@ export async function POST(request: NextRequest) {
 
     const slug = projectTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
-    const mockProject = {
-      id: `project_${Date.now()}`,
-      slug,
-      title: projectTitle,
-      artist_name: artistName,
-      cover_url: coverFile ? `https://placeholder.com/covers/${coverFile.name}` : null,
-      description,
-      genre,
-      status: juApproval ? 'under_review' : 'received'
+    let coverUrl = null
+    if (coverFile) {
+      const coverPath = `covers/${Date.now()}-${coverFile.name}`
+      const { error: coverError } = await supabase.storage
+        .from('music-uploads')
+        .upload(coverPath, coverFile)
+      
+      if (coverError) {
+        console.error('Cover upload error:', coverError)
+      } else {
+        const { data: { publicUrl } } = supabase.storage
+          .from('music-uploads')
+          .getPublicUrl(coverPath)
+        coverUrl = publicUrl
+      }
     }
 
-    const mockTracks = audioFiles.map((audioFile, i) => ({
-      id: `track_${Date.now()}_${i}`,
-      project_id: mockProject.id,
-      title: audioFile.name.replace(/\.[^/.]+$/, ""),
-      file_url: `https://placeholder.com/audio/${audioFile.name}`,
-      track_no: i + 1
-    }))
+    const { data: project, error: projectError } = await supabase
+      .from('projects')
+      .insert({
+        slug,
+        title: projectTitle,
+        artist_name: artistName,
+        cover_url: coverUrl,
+        description,
+        genre,
+        status: juApproval ? 'under_review' : 'received'
+      })
+      .select()
+      .single()
+
+    if (projectError) {
+      console.error('Project creation error:', projectError)
+      return NextResponse.json({ error: 'Failed to create project' }, { status: 500 })
+    }
+
+    const tracks = []
+    for (let i = 0; i < audioFiles.length; i++) {
+      const audioFile = audioFiles[i]
+      const audioPath = `audio/${Date.now()}-${audioFile.name}`
+      
+      const { error: audioError } = await supabase.storage
+        .from('music-uploads')
+        .upload(audioPath, audioFile)
+      
+      if (!audioError) {
+        const { data: { publicUrl } } = supabase.storage
+          .from('music-uploads')
+          .getPublicUrl(audioPath)
+        
+        const { data: track } = await supabase
+          .from('tracks')
+          .insert({
+            project_id: project.id,
+            title: audioFile.name.replace(/\.[^/.]+$/, ""),
+            file_url: publicUrl,
+            track_no: i + 1
+          })
+          .select()
+          .single()
+        
+        if (track) tracks.push(track)
+      }
+    }
 
     if (priorityReview) {
-      console.log('Mock priority review order created:', {
-        amount: 29,
-        currency: 'USD',
-        status: 'created',
-        source: 'priority',
-        artist_name: artistName,
-        links: { instagram, twitter, spotify }
-      })
+      const { data: order } = await supabase
+        .from('orders')
+        .insert({
+          amount: 29,
+          currency: 'USD',
+          status: 'created',
+          source: 'priority'
+        })
+        .select()
+        .single()
+
+      if (order) {
+        await supabase
+          .from('promo_orders')
+          .insert({
+            order_id: order.id,
+            package: 'priority_review',
+            artist_name: artistName,
+            links: JSON.stringify({ instagram, twitter, spotify })
+          })
+      }
     }
 
     return NextResponse.json({
       success: true,
-      project: mockProject,
-      tracks: mockTracks,
-      message: 'Music submitted successfully! (Demo mode - no files actually uploaded)'
+      project: project,
+      tracks: tracks,
+      message: 'Music submitted successfully!'
     })
 
   } catch (error) {
